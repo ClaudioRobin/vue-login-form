@@ -1,0 +1,397 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Tema secundário 
+  --primary: #3363ac;
+  --secondary: #f59d24;
+  --dark: #00305a;
+  --input-text-color: black;
+  --title-color: var(--primary);
+  --input-label-color: #888;
+  --input-border-color: #bbb;
+  --info: var(--primary);
+  --danger: red;
+  --bg-form: white;
+  --bg-app: linear-gradient(111.46deg, var(--dark) 0%, var(--primary) 100%);
+  --logo-filter: grayscale(100%) brightness(1000%) opacity(20%);
+  */
+
+  /*
+  Tema padrão
+  */
+  --primary: #3363ac;
+  --secondary: #f59d24;
+  --dark: #00305a;
+  --input-text-color: #eee;
+  --title-color: #bbb;
+  --input-label-color: #999;
+  --input-border-color: #555;
+  --info: #19aab4;
+  --danger: #ff2a2a;
+  --bg-form: rgba(0, 48, 90, 0.94);
+  --bg-app: url(solar-plant-login.jpg);
+  --logo-filter: none;
+}
+
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  font-family: Helvetica;
+  -webkit-font-smoothing: antialiased;
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-secondary {
+  color: var(--secondary);
+}
+
+#app {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--bg-app);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: top;
+  background-position-x: center;
+}
+
+hgroup {
+  text-align: center;
+}
+
+hgroup > h1 {
+  color: var(--title-color);
+  margin-top: 0px;
+  margin-top: 0px;
+  margin-bottom: 1em;
+}
+
+div.logo {
+  margin: 30px 0px 0px 30px;
+}
+
+img.logo {
+  height: 60px;
+}
+
+span.logo {
+  vertical-align: middle;
+}
+
+h1,
+h3 {
+  font-weight: 300;
+}
+
+form {
+  min-width: 280px;
+  max-width: 380px;
+  padding: 4em 2em 4em 2em;
+  margin: 5% auto;
+  background: var(--bg-form);
+  border: var(--dark);
+  border-radius: 3px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3), 0 3px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.group {
+  position: relative;
+  margin-bottom: 45px;
+}
+
+input.mt {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  -webkit-appearance: none;
+  display: block;
+  background: transparent;
+  color: var(--input-text-color);
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid var(--input-border-color);
+}
+
+input.mt:focus {
+  outline: none;
+}
+
+span.error {
+  font-size: 14px;
+  color: var(--danger);
+}
+
+/* Label */
+
+label.mt {
+  color: var(--input-label-color);
+  font-size: 18px;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: all 0.2s ease;
+}
+
+/* active */
+
+input.mt:focus ~ label.mt,
+input.mt.used ~ label.mt {
+  top: -20px;
+  transform: scale(0.75);
+  left: -2px;
+  /* font-size: 14px; */
+  color: var(--info);
+}
+
+/* active and have error */
+.group.error > input.mt:focus ~ label.mt,
+.group.error > input.mt.used ~ label.mt {
+  color: var(--input-label-color);
+}
+
+/* Underline */
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.bar:before,
+.bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: var(--info);
+  transition: all 0.2s ease;
+}
+
+.group.error > .bar:before,
+.group.error > .bar:after {
+  background: var(--danger);
+}
+
+.bar:before {
+  left: 50%;
+}
+
+.bar:after {
+  right: 50%;
+}
+
+/* active */
+
+input.mt:focus ~ .bar:before,
+input.mt:focus ~ .bar:after {
+  width: 50%;
+}
+
+/* Highlight */
+
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* active */
+
+input.mt:focus ~ .highlight {
+  animation: inputHighlighter 0.3s ease;
+}
+
+/* Animations */
+
+@keyframes inputHighlighter {
+  from {
+    background: var(--info);
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+
+/* Button */
+
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  margin: 0.3em 0 1em 0;
+  width: 100%;
+  vertical-align: middle;
+  color: white;
+  font-size: 16px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+  background: transparent;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.button:focus {
+  outline: 0;
+}
+
+/* Button modifiers */
+
+.button-secondary {
+  background: var(--secondary);
+}
+
+.button-secondary:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 60, 0.3),
+    0 4.5px 15px 0 rgba(0, 0, 60, 0.3);
+}
+
+/* Ripples container */
+
+.ripples {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Ripples circle */
+
+.ripplesCircle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.ripples.is-active .ripplesCircle {
+  animation: ripples 0.4s ease-in;
+}
+
+/* Ripples animation */
+
+@keyframes ripples {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  100% {
+    width: 200%;
+    padding-bottom: 200%;
+    opacity: 0;
+  }
+}
+
+/* Switch */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 26px;
+}
+
+label.switch > input {
+  height: 0px;
+  width: 0px;
+}
+
+input.switch {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 26px;
+
+  -moz-box-shadow: inset 0 0 5px #000000;
+  -webkit-box-shadow: inset 0 0 5px #000000;
+  box-shadow: inset 0 0 5px #000000;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--dark);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(34px);
+  -ms-transform: translateX(34px);
+  transform: translateX(34px);
+}
+
+.theme-switch {
+  position: absolute;
+  bottom: calc(2vh + 10px);
+  right: calc(2vw + 10px);
+}
+
+.theme-switch > p {
+  color: #222;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0px;
+}
